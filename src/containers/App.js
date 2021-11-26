@@ -1,31 +1,19 @@
 import {useState} from 'react'
-import FacebookLogin from 'react-facebook-login';
-
+import NavBar from '../components/NavBar';
+import { ChakraProvider } from "@chakra-ui/react"
+import AppRouter from '../routes/AppRouter'
 function App() {
-const [perfil, setPerfil] = useState({})
-  const responseFacebook = (response) => {
-    console.log(response);
-    const res = response.picture;
-    const{data} = res;
-    console.log(data );
-    setPerfil(data);
-  }
   
-  return (
-   <> <div>
-    <FacebookLogin
-    appId="3341008039459589"
-    autoLoad={false}
-    fields="name,email,picture"
-    // onClick={componentClicked}
-    callback={responseFacebook} />
 
+  return (
+
+   <div>
+  <ChakraProvider>
+     <AppRouter />
+  </ChakraProvider>
+
+         
 </div>
-<div>
-         
-                <img src={perfil.url} alt="" />
-         
-</div></>
 
 
 
