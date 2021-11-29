@@ -8,6 +8,8 @@ import {
     FormHelperText,
   } from "@chakra-ui/react"
   import { Button } from "@chakra-ui/react"
+import { StyleForm } from '../styles/Form.Style';
+import { Link } from 'react-router-dom';
 const Login = () => {
     const [perfil, setPerfil] = useState({})
 
@@ -20,17 +22,23 @@ const Login = () => {
       }
       
     return (
-        <div>
+        <StyleForm>
 
 <FormControl id="email">
-  <FormLabel>Correo Electronico</FormLabel>
-  <Input type="email" />
+  <FormLabel className='label' >Correo Electronico</FormLabel>
+  <Input type="email" 
+    placeholder="Correo electronico"
+    />
 </FormControl>
 <FormControl id="password">
-  <FormLabel>Contraseña</FormLabel>
-  <Input type="password" />
+  <FormLabel className='label'>Contraseña</FormLabel>
+  <Input 
+  type="password" 
+  placeholder="Contraseña"
+
+  />
 </FormControl>
-    <Button colorScheme="blue">Iniciar Sesión</Button>
+    <Button className="create-button" colorScheme="blue">Iniciar Sesión</Button>
 <FacebookLogin
     appId="3341008039459589"
     autoLoad={false}
@@ -40,8 +48,10 @@ const Login = () => {
         icon="fa-facebook"
         textButton='Ingresar con Facebook'
     />
-
-        </div>
+    <p>Si no tienes cuenta 
+    <Link to="/registro">Registrarse</Link>
+    </p>
+        </StyleForm>
     )
 }
 

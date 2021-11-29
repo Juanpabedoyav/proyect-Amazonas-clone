@@ -1,22 +1,31 @@
 import React from 'react'
 import {Link, BrowserRouter, Routes, Route} from 'react-router-dom'
-import NavBar from '../components/NavBar'
-import App from '../containers/App'
 import Login from '../components/Login'
+import PrivateRouter from './PrivateRouter'
+import PublicRouter from './PublicRouter'
+import RoutesApp from './RoutesApp'
+import Registro from '../components/Registro'
 
-const  AppRouter= () => {
+ const  AppRouter= () => {
    
       
     return (
         <BrowserRouter>
-<NavBar/>
+
         <Routes>
 
-        {/* <Route path='/' element={}/> */}
-        <Route path='/login' element={<Login/>}/>
-
+        <Route path='*' element={
+                                    <PrivateRouter>
+                                        <RoutesApp/>
+                                    </PrivateRouter>}/>
         </Routes>
-        </BrowserRouter>
+
+        <Routes>
+        <Route path='/login' element={<PublicRouter>
+                                        <Login/>
+                                    </PublicRouter>}/>
+        </Routes>
+    </BrowserRouter>
     )
 }
 

@@ -1,3 +1,5 @@
+import { faShoppingCart, faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { Navbar, Container, Nav , NavDropdown ,Form, Button,FormControl} from 'react-bootstrap';
 
@@ -7,10 +9,10 @@ import logoAmazon from '../assets/logoAmazon.svg'
 import '../styles/styleNav.css'
 const NavBar = () => {
     return (
-        <div>
+<div>
             <Navbar className="background-nav" expand="lg">
   <Container fluid>
-    <Navbar.Brand href="#">
+    <Navbar.Brand as= {Link} to="/home">
       <img src={logoAmazon} alt='logo'/>
       </Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -20,7 +22,12 @@ const NavBar = () => {
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <Nav.Link as= {Link} className="link-item" to="/login">Home</Nav.Link>
+        <div className='options'>
+        <span className="link-item" >Hola</span>
+        <Nav.Link as= {Link} className="link-item" to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>Elige Tu dirección</Nav.Link>
+        </div>
+        <div className='options'>
+
         <Form className="d-flex">
         <FormControl
           type="search"
@@ -28,23 +35,35 @@ const NavBar = () => {
           className="me-2"
           aria-label="Search"
         />
-        <Button >Search</Button>
+        <Button >
+        <FontAwesomeIcon style={{color:'black'}}icon= {faSearch}/>
+
+        </Button>
       </Form>
-        {/* <Nav.Link  className="link-item" href="#action2">Link</Nav.Link> */}
+      </div>
+
+      <div className='options'>
+        <span  className="link-item" >Hola, identificate</span>
         <NavDropdown title="Cuenta y Listas"id="navbarScrollingDropdown">
           <NavDropdown.Item href="#action3">Productos</NavDropdown.Item>
-          <NavDropdown.Item href="#action4"></NavDropdown.Item>
-
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action5">
           <Link to='/login' >Iniciar Sesion</Link>
           </NavDropdown.Item>
         </NavDropdown>
+        </div>
+        <div className='options'>
+        <span className="link-item" >Devoluciones</span>
+        <Nav.Link as= {Link} className="link-item" to="/home">Y Pedidos</Nav.Link>
+        </div>
+        <div className='options'>
+        <Nav.Link as= {Link} className="link-item" to="/carrito"><FontAwesomeIcon icon= {faShoppingCart} size="lg"/></Nav.Link>
+        </div>
       </Nav>
     </Navbar.Collapse>
   </Container>
-</Navbar>
-        </div>
+ </Navbar>
+</div>
     )
 }
 
