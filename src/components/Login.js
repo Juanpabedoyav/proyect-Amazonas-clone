@@ -10,7 +10,6 @@ import {
 import { StyleForm } from '../styles/Form.Style';
 import { Link } from 'react-router-dom';
 const Login = () => {
-    const [perfil, setPerfil] = useState({})
 
    
       
