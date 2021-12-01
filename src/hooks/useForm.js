@@ -1,11 +1,11 @@
 import {useState} from 'react'
 
 export const useForm = (initialState={})=>{
-const [Form, setForm]  = useState({})
+const [form, setForm]  = useState({})
 
 const handleInput = ({target})=>{
     setForm({
-        ...Form,
+        ...form,
         [target.name]: target.value,
 
     });
@@ -13,5 +13,5 @@ const handleInput = ({target})=>{
 const  reset = ()=>{
     setForm(initialState)
 }
-return [Form, handleInput, reset];
+return [form, handleInput, reset];
 }
