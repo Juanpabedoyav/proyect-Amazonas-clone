@@ -11,7 +11,7 @@ import { StyleForm } from '../styles/Form.Style';
 import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import {loginEmailAndPassword} from '../redux/actions/loginAction'
+import { loginEmailAndPassword, loginGoogle} from '../redux/actions/loginAction'
 const Login = () => {
 const dispatch = useDispatch()
    const[form, handleInput, reset]= useForm({
@@ -24,8 +24,10 @@ const { email, password} = form
 const handleSubmit =(e)=>{
 e.preventDefault()
 dispatch(loginEmailAndPassword(email, password))
-console.log(form)
 reset()
+}
+const handleGoogle = ()=>{
+  dispatch(loginGoogle())
 }
     return (
         <StyleForm>
@@ -53,8 +55,11 @@ reset()
 
   />
 </FormControl>
+
     <Button type='submit'className="create-button" colorScheme="blue">Iniciar Sesión</Button>
     </form>
+    <Button onClick={handleGoogle} type='button'className="create-button" colorScheme="blue">Google</Button>
+
     <p>Si no tienes cuenta 
     <Link to="/registro">Registrarse</Link>
     </p>
