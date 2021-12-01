@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
     FormControl,
     FormLabel,
@@ -11,7 +11,7 @@ import { StyleForm } from '../styles/Form.Style';
 import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import {login} from '../redux/actions/loginAction'
+import {loginEmailAndPassword} from '../redux/actions/loginAction'
 const Login = () => {
 const dispatch = useDispatch()
    const[form, handleInput, reset]= useForm({
@@ -23,7 +23,7 @@ const dispatch = useDispatch()
 const { email, password} = form
 const handleSubmit =(e)=>{
 e.preventDefault()
-dispatch(login(email, password))
+dispatch(loginEmailAndPassword(email, password))
 console.log(form)
 reset()
 }

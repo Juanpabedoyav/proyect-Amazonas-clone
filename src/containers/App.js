@@ -1,5 +1,3 @@
-import {useState} from 'react'
-import NavBar from '../components/NavBar';
 import { ChakraProvider } from "@chakra-ui/react"
 import AppRouter from '../routes/AppRouter'
 function App() {

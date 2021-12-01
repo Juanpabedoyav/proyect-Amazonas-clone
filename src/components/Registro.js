@@ -2,9 +2,7 @@ import React from 'react'
 import {
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    Input,
-    FormHelperText,
+    Input
   } from "@chakra-ui/react"
   import { Button } from "@chakra-ui/react"
 import { StyleForm } from '../styles/Form.Style';
