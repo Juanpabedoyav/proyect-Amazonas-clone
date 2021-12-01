@@ -11,7 +11,7 @@ import { StyleForm } from '../styles/Form.Style';
 import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { loginEmailAndPassword, loginGoogle} from '../redux/actions/loginAction'
+import { loginEmailAndPassword, loginGoogle, loginFacebook} from '../redux/actions/loginAction'
 const Login = () => {
 const dispatch = useDispatch()
    const[form, handleInput, reset]= useForm({
@@ -21,14 +21,23 @@ const dispatch = useDispatch()
    })
       
 const { email, password} = form
+// login Events
+
 const handleSubmit =(e)=>{
 e.preventDefault()
 dispatch(loginEmailAndPassword(email, password))
 reset()
 }
+
 const handleGoogle = ()=>{
   dispatch(loginGoogle())
 }
+
+const handleFacebook = ()=>{
+  dispatch(loginFacebook())
+}
+
+
     return (
         <StyleForm>
 <form onSubmit={handleSubmit}>
@@ -59,6 +68,7 @@ const handleGoogle = ()=>{
     <Button type='submit'className="create-button" colorScheme="blue">Iniciar Sesión</Button>
     </form>
     <Button onClick={handleGoogle} type='button'className="create-button" colorScheme="blue">Google</Button>
+    <Button onClick={handleFacebook} type='button'className="create-button" colorScheme="blue">Facebook</Button>
 
     <p>Si no tienes cuenta 
     <Link to="/registro">Registrarse</Link>

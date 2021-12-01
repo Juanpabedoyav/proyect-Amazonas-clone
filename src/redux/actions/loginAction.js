@@ -1,7 +1,7 @@
 import {types} from '../types/types' 
 
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import {google} from '../../firebase/firebase'
+import {google, facebook} from '../../firebase/firebase'
 
 
 export const login = (email, password) =>{
@@ -30,6 +30,20 @@ return (dispatch)=>{
    
 }
 }
+export const loginFacebook = () =>{
+    return (dispatch)=>{
+    const auth = getAuth()
+    signInWithPopup(auth, facebook)
+    .then(({user})=>{
+        dispatch(alert(user));
+
+    }).catch(e=>{
+        alert(e);
+    })
+    }
+    }
+
+
 export const loginEmailAndPassword = (email, password) =>{
     return (dispatch)=>{
         const auth = getAuth()
