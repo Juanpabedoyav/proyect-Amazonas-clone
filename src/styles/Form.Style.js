@@ -19,13 +19,9 @@ box-shadow: 2px 2px 10px 5px rgb(0, 0, 0, 0.2);
     width: 50%; 
     
 }
-.kep-login-facebook{
-    display:block;
-    margin: 0px auto;
-font-size: .8rem;
-padding: 10px;
-margin-bottom: 120px;
-/* border-radius:28px; */
+.registro-alert{
+margin: 20px 0;
+    /* border-radius:28px; */
 }
 .error{
       /* borderx: 1px solid red; */

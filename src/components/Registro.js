@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {
     FormControl,
     FormLabel,
@@ -14,6 +14,7 @@ import {Form, Formik, Field, ErrorMessage,} from 'formik'
 import {useNavigate} from 'react-router-dom'
 const Registro = () => {
 
+  const [submit, setSubmit] = useState(false)
 
 const navigate = useNavigate()
 
@@ -44,7 +45,8 @@ const navigate = useNavigate()
       }}
       onSubmit={(data, {resetForm})=>{
         resetForm();
-      setTimeout(()=> navigate('/login'), 3000 );      
+       setSubmit(true);
+      setTimeout(()=> navigate('/login'), 2000 );      
       
       }}
 
@@ -54,7 +56,7 @@ const navigate = useNavigate()
 {({errors})=>(
    <Form >
      {/* {console.log(props)}    */}
-
+ 
    <FormControl >
   <FormLabel htmlFor="name" className='label'>Nombre Completo</FormLabel>
   <Field
@@ -89,7 +91,12 @@ const navigate = useNavigate()
     <Button 
     type='submit'
     className="create-button" 
-    colorScheme="blue">Crear cuenta</Button>
+    colorScheme="blue"
+    >Crear cuenta</Button>
+    { submit && <Alert className='registro-alert' status='success'><AlertIcon />Registro Exitoso!</Alert>
+    // :
+    //  <Alert className='registro-alert' status='eror'><AlertIcon />Error en el registro!</Alert>
+    }
     <Link to='/login'>Volver</Link>
   </Form>
 )}

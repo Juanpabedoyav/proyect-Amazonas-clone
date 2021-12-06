@@ -5,7 +5,7 @@ import PrivateRouter from './PrivateRouter'
 import PublicRouter from './PublicRouter'
 import RoutesApp from './RoutesApp'
 import Registro from '../components/Registro'
-
+import Home from '../components/Home'
  const  AppRouter= () => {
    
       
@@ -21,8 +21,8 @@ import Registro from '../components/Registro'
         </Routes>
 
         <Routes>
-        <Route path='/login' element={<PublicRouter>
-                                        <Login/>
+        <Route path='/' element={<PublicRouter>
+                                        <Home/>
                                     </PublicRouter>}/>
         </Routes>
     </BrowserRouter>
