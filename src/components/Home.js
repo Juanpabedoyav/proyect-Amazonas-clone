@@ -1,28 +1,35 @@
 import React from 'react'
 import { ContainerHome } from '../styles/Home.Style'
-import { getDocs, collection } from "firebase/firestore";
 import { useEffect } from 'react';
-import { db } from '../firebase/firebase';
+import { getData } from '../redux/actions/getDataAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
-
-const getData = async ()=>{
-
-    const docRef = collection( db, "productos");
-    const getData = await getDocs(docRef);
-    console.log(getData)
-}
+const state = useSelector(state => state.getData)
+ const dispatch = useDispatch()
 
 useEffect(() => {
-    getData();
+
+dispatch(getData())
 }, [])
+
+
+
+
 
 
     return (
         <ContainerHome>
-            home
+
+
         </ContainerHome>
     )
+
+
 }
+
+
+
+  
 
 export default Home
