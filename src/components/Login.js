@@ -14,12 +14,14 @@ import { useDispatch } from 'react-redux';
 import { loginEmailAndPassword, loginGoogle, loginFacebook} from '../redux/actions/loginAction'
 const Login = () => {
 const dispatch = useDispatch()
+
+
+
    const[form, handleInput, reset]= useForm({
     email:'',
     password:''
 
-   })
-      
+   }) 
 const { email, password} = form
 // login Events
 
