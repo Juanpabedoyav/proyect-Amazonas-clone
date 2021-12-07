@@ -5,9 +5,10 @@ import { getData } from '../redux/actions/getDataAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
-const state = useSelector(state => state.getData)
- const dispatch = useDispatch()
+const state = useSelector(state => state.data)
 
+ const dispatch = useDispatch()
+console.log(state)
 useEffect(() => {
 
 dispatch(getData())

@@ -63,7 +63,8 @@ const navigate = useNavigate()
   id='name'
   name='name' 
   type="text"
-  placeholder="Nombre completo"/>
+  placeholder="Nombre completo"
+ />
 
    <ErrorMessage name='name' component={()=>(<div className="error" >{errors.name}</div>)} />
 </FormControl>
