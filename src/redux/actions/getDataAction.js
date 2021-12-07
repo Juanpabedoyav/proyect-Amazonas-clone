@@ -18,13 +18,15 @@ export const getData = () =>{
         const getProducts = await getDocs(docRef)
         const info =[]
         getProducts.forEach((docs)=>{
+
             info.push(docs.data())
             // console.log(info)
         
 
         })
-        
+        if(info !== undefined){
         dispatch(getInfo(info));
+    }
         // console.log(getProducts)   
         }
     }

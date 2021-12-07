@@ -34,8 +34,9 @@ export const loginFacebook = () =>{
     return (dispatch)=>{
     const auth = getAuth()
     signInWithPopup(auth, facebook)
+    // signInWithRedirect(auth, facebook)
     .then(({user})=>{
-        dispatch(alert(user));
+        // dispatch(alert(user));
 
     }).catch(e=>{
         alert(e);

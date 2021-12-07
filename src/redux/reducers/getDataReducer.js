@@ -3,7 +3,7 @@ import { types } from "../types/types";
 
 
 
-export const getDataReducer= (state={}, action) =>{
+export const getDataReducer= (state=[], action) =>{
 switch (action.type) {
     case types.getData:
         return{
