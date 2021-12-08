@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const ContainerHome = styled.div`
     background-color: #eaeded;
-    height:1150px;
+    height:100%;
     width: 100%;
     justify-content: space-evenly;
     /* padding: 20px 0px; */
@@ -19,7 +19,7 @@ export const ContainerHome = styled.div`
                 
         /* border: 1px solid green; */
         width:100%;
-        /* height: 300px; */
+        height: 300px;
         display: flex;
         align-items: center;
         justify-content: center ;
@@ -41,7 +41,7 @@ export const ContainerHome = styled.div`
         background-color: white;
         padding: 20px ;
         position: relative;
-        bottom: 140px;
+        bottom: 50px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

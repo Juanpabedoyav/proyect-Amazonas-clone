@@ -15,17 +15,18 @@ const Home = () => {
 
  const stateInfo = useSelector(state => state.data)
  const [info, setInfo] = useState(stateInfo)
-//  dispatch(getData())
 
-
+const traerData =()=>{
+//  dispatch(getData());
+setTimeout(()=>(dispatch(getData())),5000)  ;
+}
 
 
 useEffect(() => {
-// setInfo(stateInfo)
-//   console.log(info)
+        traerData();
+        setInfo(stateInfo);
+        console.log(info.data);
 }, [])
-
-
     return (
         <ContainerHome>
                 <div className='container-img'>
@@ -42,51 +43,25 @@ useEffect(() => {
                 </article>
 
 
-                <article className='card'>
-       
-                        <div className='card-img'>
-                        <img  src='https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764207/amazona/mixer_lyq2ap.jpg' alt="imagenes" />
-                        </div>
-                        <p className='description'>Bigking Lente Full Fame, Aviación Aluminio 11 mm F2.8 Lente Ojo de pez de Enfoque Manual...</p>
-                        <p className=' precio'><sup>US $</sup> Precio</p>
-                </article>
-
-                <article className='card'>
-       
-                        <div className='card-img'>
-                        <img  src='https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764208/amazona/televisor_jcwjql.jpg' alt="imagenes" />
-                        </div>
-                        <p className='description'>Bigking Lente Full Fame, Aviación Aluminio 11 mm F2.8 Lente Ojo de pez de Enfoque Manual...</p>
-                        <p className=' precio'><sup>US $</sup> Precio</p>
-                </article>
               
-                <article className='card'>
-       
-                        <div className='card-img'>
-                        <img  src='https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764208/amazona/goldenState_ym0fps.jpg' alt="imagenes" />
-                        </div>
-                        <p className='description'>Bigking Lente Full Fame, Aviación Aluminio 11 mm F2.8 Lente Ojo de pez de Enfoque Manual...</p>
-                        <p className=' precio'><sup>US $</sup> Precio</p>
-                </article>
-              
-
-              
-      {/* {info.data.map(element => {
+      {info.data.map(element => {
               return(
-                 <Link to={`/detalle/${element.nombre}`} ><article className="card">
-                       <div className= 'img-card'>
+                 <Link style={{color:'black'}}to={`/detalle/${element.nombre}`} >
+                 
+                  <article className='card'>
+       
+                        <div className='card-img'>
                         <img  src={element.imagen} alt="imagenes" />
                         </div>
-                        <h1>{element.nombre}</h1>
-                       
-                        
+                        <p className='description'>{element.nombre}</p>
+                        <p className=' precio'><sup>US $</sup>{element.precio}</p>
                 </article>
                 </Link> 
                 )
               
           })
           
-          }      */}
+          }     
         </ContainerHome>
     )
 
