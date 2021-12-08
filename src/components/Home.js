@@ -3,6 +3,8 @@ import { ContainerHome } from '../styles/Home.Style'
 import { useEffect } from 'react';
 import { getData } from '../redux/actions/getDataAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/button';
 
 const Home = () => {
 
@@ -20,14 +22,16 @@ const Home = () => {
 
 useEffect(() => {
 setInfo(stateInfo)
-  console.log(info.data)
+  console.log(info)
 }, [])
 
 
     return (
         <ContainerHome>
-              <article>
-                        <h1>Inicio</h1>
+              <article className='card'>
+             <Link to='login'>
+              <Button className="create-button" colorScheme="blue">Iniciar Sesión</Button>
+              </Link>
                         <div>
                         <img  src='' alt="imagenes" />
                         </div>
@@ -35,14 +39,15 @@ setInfo(stateInfo)
                 </article>
       {info.data.map(element => {
               return(
-                  <article>
-                       <div>
+                 <Link to={`/detalle/${element.nombre}`} ><article className="card">
+                       <div className= 'img-card'>
                         <img  src={element.imagen} alt="imagenes" />
                         </div>
                         <h1>{element.nombre}</h1>
                        
                         
                 </article>
+                </Link> 
                 )
               
           })
