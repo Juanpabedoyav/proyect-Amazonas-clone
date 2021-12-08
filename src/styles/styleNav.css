@@ -17,7 +17,7 @@
 span{
     color:white;
     margin-left: 10px;
-font-size:.9rem;
+font-size:.8rem;
 }
 a{
     color: white;
@@ -25,7 +25,8 @@ a{
 font-weight: 800;
 }
 .options{
-    margin: 0 30px;
+    margin-left:10px;
+    /* margin: 0 30px; */
     /* border: 1px solid red; */
     height: 50px;
     /* width : 80px; */
@@ -33,10 +34,7 @@ font-weight: 800;
     flex-direction: column;
     justify-content: center;
 }
-.d-flex{
-    width: 586px;
-    height: 40px;
-}
+
 .btn-primary{
     margin-left:-10px;
     background-color: #F0AD64;
@@ -57,4 +55,65 @@ font-weight: 800;
 }
 .location{
     margin-right: 5px;
+}
+.d-flex{
+    width: 500px;
+    margin:  0 20px;
+}
+
+/* second bar Drawr */
+.second-bar{
+    background-color:#232f3e;
+    color: white;
+    font-weight: 800;
+    padding: 4px 8px;
+    height: 6vh;
+    font-size: 1rem;
+}
+.options-second-bar:hover{
+border: .6px solid #ffff;
+display: inline-block;
+font-weight: 800;
+cursor:pointer;
+/* padding: 2px; */
+}
+.logo-second-bar{
+    margin-right: 10px;
+}
+.drawer-header{
+    background-color:#232f3e;
+    color: white;
+
+}
+.user-avatar{
+    margin-right: 10px;
+}
+.title-drawer{
+    margin: 10px 0;
+    /* border: 1px solid red; */
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.drawer-option{
+    font-size: .9rem;
+}
+.select-option{
+    margin-top: 15px;
+    cursor:pointer;
+    text-decoration: none;
+    /* background-color: rgba(130, 146, 238, 0.26); */
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.select-option:hover{
+    background-color: rgba(130, 146, 238, 0.068);
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-top: 15px;
+    cursor:pointer;
+    text-decoration: none;
+    color:black;
+    
 }

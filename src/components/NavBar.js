@@ -1,19 +1,40 @@
-import { faShoppingCart, faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faSearch, faMapMarkerAlt, faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
+import React, {useState} from 'react'
 import { Navbar, Container, Nav , NavDropdown ,Form, Button,FormControl} from 'react-bootstrap';
+import { useDisclosure } from '@chakra-ui/react'
 
 import {Link} from 'react-router-dom'
 
 import logoAmazon from '../assets/logoAmazon.svg'  
 import '../styles/styleNav.css'
+import {
+  Drawer,
+  DrawerBody,
+  // DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  // DrawerCloseButton,
+} from '@chakra-ui/react'
+
+
 const NavBar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [placement, setPlacement] = useState('left')
+
+
+
+
+
+
     return (
 <div>
-            <Navbar className="background-nav" expand="lg">
+  <Navbar className="background-nav" expand="lg">
   <Container fluid>
-    <Navbar.Brand as= {Link} to="/home">
+    <Navbar.Brand as= {Link} to="/">
       <img src={logoAmazon} alt='logo'/>
+
       </Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
@@ -31,7 +52,6 @@ const NavBar = () => {
         <Form className="d-flex">
         <FormControl
           type="search"
-          placeholder="Search"
           className="me-2"
           aria-label="Search"
         />
@@ -52,17 +72,44 @@ const NavBar = () => {
           </NavDropdown.Item>
         </NavDropdown>
         </div>
+
         <div className='options'>
         <span className="link-item" >Devoluciones</span>
         <Nav.Link as= {Link} className="link-item" to="/home">Y Pedidos</Nav.Link>
         </div>
+
         <div className='options'>
         <Nav.Link as= {Link} className="link-item" to="/carrito"><FontAwesomeIcon icon= {faShoppingCart} size="lg"/></Nav.Link>
         </div>
+
       </Nav>
     </Navbar.Collapse>
   </Container>
  </Navbar>
+ <nav className='second-bar' >
+ <p className='options-second-bar' onClick={onOpen}>
+ <FontAwesomeIcon className='logo-second-bar' style={{color:'white'}}icon= {faBars}/>
+  Todo
+  </p>
+  </nav>    
+
+ <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <Link to='/login'>
+          <DrawerHeader className='drawer-header' borderBottomWidth='1px'  ><FontAwesomeIcon className='user-avatar' icon= {faUserCircle} size='lg' />Hola, Identificate</DrawerHeader>
+          </Link>
+          <DrawerBody>
+         <h1 className='title-drawer'> Ayuda Y Configuración</h1>
+        <div className='drawer-option'>
+        <p className='select-option'>Carrito</p>
+        <p  className='select-option'>Productos</p>
+            <Link to='/login'><p className='select-option' >Identifícate</p></Link>
+        </div>
+
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
 </div>
     )
 }
