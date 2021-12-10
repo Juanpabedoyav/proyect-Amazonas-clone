@@ -17,6 +17,7 @@ import {
   DrawerContent,
   // DrawerCloseButton,
 } from '@chakra-ui/react'
+import { Formik } from 'formik';
 
 
 const NavBar = () => {
@@ -49,17 +50,23 @@ const NavBar = () => {
         </div>
         <div className='options'>
 
+  <Formik
+  intia
+
+
+  >
         <Form className="d-flex">
         <FormControl
           type="search"
           className="me-2"
           aria-label="Search"
         />
-        <Button >
+        <Button type='submit' >
         <FontAwesomeIcon style={{color:'black'}}icon= {faSearch}/>
 
         </Button>
       </Form>
+</Formik>
       </div>
 
       <div className='options'>

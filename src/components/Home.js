@@ -8,25 +8,16 @@ import { Button } from '@chakra-ui/button';
 
 const Home = () => {
 
-// const {data} = info
+
 
 
  const dispatch = useDispatch()
 
- const stateInfo = useSelector(state => state.data)
- const [info, setInfo] = useState(stateInfo)
-
-const traerData =()=>{
-//  dispatch(getData());
-setTimeout(()=>(dispatch(getData())),5000)  ;
-}
-
-
+ const {data} = useSelector(state => state.data)
+ 
 useEffect(() => {
-        traerData();
-        setInfo(stateInfo);
-        console.log(info.data);
-}, [])
+        dispatch(getData())
+}, [dispatch])
     return (
         <ContainerHome>
                 <div className='container-img'>
@@ -44,7 +35,7 @@ useEffect(() => {
 
 
               
-      {info.data.map(element => {
+      {data?.map(element => {
               return(
                  <Link style={{color:'black'}}to={`/detalle/${element.nombre}`} >
                  
@@ -61,7 +52,7 @@ useEffect(() => {
               
           })
           
-          }     
+          }      
         </ContainerHome>
     )
 

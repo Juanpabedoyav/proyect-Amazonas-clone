@@ -29,6 +29,8 @@ height: 450px;
         height:100%;
         /* width: 100%; */
         margin: 0 auto;
+    object-fit: contain;
+
     }
 
 }
