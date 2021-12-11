@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { agregarCarrito, BusquedaProducto, getData, getDataOta } from '../redux/actions/getDataAction'
 import { StyleDetalle } from '../styles/Detalle.style'
+import Footer from './Footer'
 
 const Detalle = () => {
 
@@ -16,10 +17,12 @@ const Detalle = () => {
         dispatch(agregarCarrito(data[0]))
         console.log('producto agregado')
         console.log(data[0])
+
     }
 
    useEffect(() => {
     dispatch(BusquedaProducto(id))
+    // AddCarrito();
         //    dispatch(getData())
         //    console.log(info.filter(el=> el === id))
         // console.log(data?.map(el=>el.imagen))
@@ -63,6 +66,7 @@ data?.map(el => {
 }    
 
             </StyleDetalle>
+            <Footer />
 </div>
     )
 }
