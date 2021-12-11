@@ -2,7 +2,8 @@ import { Button } from '@chakra-ui/button'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { agregarCarrito, BusquedaProducto, getData, getDataOta } from '../redux/actions/getDataAction'
+import { agregarCarrito } from '../redux/actions/carritoAction'
+import { BusquedaProducto, getData, getDataOta } from '../redux/actions/getDataAction'
 import { StyleDetalle } from '../styles/Detalle.style'
 import Footer from './Footer'
 
@@ -14,9 +15,10 @@ const Detalle = () => {
     const {id} = useParams()
 
     const AddCarrito = ()=>{
-        dispatch(agregarCarrito(data[0]))
-        console.log('producto agregado')
-        console.log(data[0])
+        // e.preventDefault();
+        console.log(dispatch(agregarCarrito(data[0])))
+        // console.log('producto agregado')
+        // console.log(data[0])
 
     }
 

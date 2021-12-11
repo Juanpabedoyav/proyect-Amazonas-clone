@@ -2,7 +2,7 @@ import { types } from "../types/types"
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from '../../firebase/firebase'
 
- const getInfo =(data)=>{
+export const getInfo =(data)=>{
 
     return {
         type:types.getData,
@@ -52,13 +52,4 @@ export const getData = () =>{
       }
       
 
-      export const agregarCarrito = (producto) => {
-        return (dispatch) => {
-          addDoc(collection(db, "carrito"), producto)
-            .then((resp) => {
-              //console.log(resp);
-              dispatch(getInfo(producto));
-            })
-            .catch((err) => console.log(err.message));
-        };
-      }; 
+  

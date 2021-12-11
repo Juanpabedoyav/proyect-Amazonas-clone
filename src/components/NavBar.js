@@ -1,7 +1,7 @@
 import { faShoppingCart, faSearch, faMapMarkerAlt, faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState} from 'react'
-import { Navbar, Container, Nav , NavDropdown ,Form, Button,FormControl} from 'react-bootstrap';
+import { Navbar, Container, Nav , NavDropdown , Button,FormControl} from 'react-bootstrap';
 import { useDisclosure } from '@chakra-ui/react'
 
 import {Link} from 'react-router-dom'
@@ -17,19 +17,22 @@ import {
   DrawerContent,
   // DrawerCloseButton,
 } from '@chakra-ui/react'
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import { useDispatch } from 'react-redux';
+import { BusquedaProducto } from '../redux/actions/getDataAction';
 
 
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = useState('left')
 
-
+const dispatch = useDispatch()
 
 
 
 
     return (
+   
 <div>
   <Navbar className="background-nav" expand="lg">
   <Container fluid>
@@ -51,21 +54,35 @@ const NavBar = () => {
         <div className='options'>
 
   <Formik
-  intia
+  initialValues={{
+    nombre: '',
+  }}
+  onSubmit={(valores)=>{
+    console.log(valores);
+    dispatch(BusquedaProducto(valores.nombre));
+  }}
+
 
 
   >
-        <Form className="d-flex">
-        <FormControl
+    {({values, handleChange})=>(
+    
+   
+      <Form className="d-flex">
+        <input 
+          name='nombre'
           type="search"
           className="me-2"
-          aria-label="Search"
+          value={values.nombre}
+          onChange={handleChange}
         />
         <Button type='submit' >
         <FontAwesomeIcon style={{color:'black'}}icon= {faSearch}/>
 
         </Button>
-      </Form>
+      </Form> 
+    
+      )}
 </Formik>
       </div>
 

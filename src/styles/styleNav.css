@@ -60,6 +60,9 @@ font-weight: 800;
     width: 500px;
     margin:  0 20px;
 }
+input{
+    width: 450px;
+}
 
 /* second bar Drawr */
 .second-bar{
