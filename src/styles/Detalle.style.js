@@ -6,6 +6,8 @@ export const StyleDetalle = styled.section`
 /* border : 1px solid red; */
 display: flex;
 flex-direction: row;
+overflow:hidden;
+padding: 20px;
 /* justify-content: center; */
 height: 450px;
 .alternative-img{
@@ -25,13 +27,8 @@ height: 450px;
     /* border : 1px solid red; */
     height: 400px;
     width: 480px;
-    img{
-        height:100%;
-        /* width: 100%; */
-        margin: 0 auto;
-    object-fit: contain;
+    /* position: absolute; */
 
-    }
 
 }
 .info-img{
@@ -65,4 +62,19 @@ margin-top: 10px;
 
     }
 }
+`
+
+
+export const OptionStyle = styled.section`
+padding : 10px;
+border: 1px solid red;
+.title{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.option-card{
+    display:flex;
+    flex-direction: row;
+}
+    
 `

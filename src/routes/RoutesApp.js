@@ -4,6 +4,7 @@ import Login from '../components/Login'
 import NavBar from '../components/NavBar'
 import Registro from '../components/Registro'
 import Home from '../components/Home'
+import Carrito from '../components/Carrito'
 const RoutesApp = () => {
     return (
         <div>
@@ -11,6 +12,8 @@ const RoutesApp = () => {
 <Routes>
      <Route path='/login' element={<Login/>}/> 
 <Route path='/registro' element={<Registro/>}/>
+<Route path='/carrito' element={<Carrito/>}/>
+
 
 </Routes>
         </div>

@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { agregarCarrito } from '../redux/actions/carritoAction'
 import { BusquedaProducto, getData, getDataOta } from '../redux/actions/getDataAction'
-import { StyleDetalle } from '../styles/Detalle.style'
+import { StyleDetalle, OptionStyle } from '../styles/Detalle.style'
 import Footer from './Footer'
+import ReactImageMagnify from 'react-image-magnify';
+import '../styles/styleDetalle.css'
 
 const Detalle = () => {
 
@@ -32,6 +34,7 @@ const Detalle = () => {
 
     return (
         <div>
+  
             <StyleDetalle>
 {
 data?.map(el => {
@@ -47,8 +50,24 @@ data?.map(el => {
 
 
                 </div>
+               
                 <div className="principal-img">
-                   <img src={el.imagen} alt="" />               
+                <ReactImageMagnify   className='img'{...{
+                        smallImage: {
+                            alt: 'Wristwatch by Ted Baker London',
+                            isFluidWidth: true,
+                            // width: 1200,
+                            // height: 1000, 
+                            src: el.imagen,
+                        },
+                        largeImage: {
+                            src: el.imagen,
+                            width: 1200,
+                            height: 1000
+                            // style:'200px
+                        }
+                    }} />
+                   {/* <img src={el.imagen} alt="" />                */}
                 </div>
                 <div className="info-img">
                 <h1>{el.nombre}</h1>  
@@ -68,7 +87,28 @@ data?.map(el => {
 }    
 
             </StyleDetalle>
-            <Footer />
+    <OptionStyle>
+    <h1 className='title'>Productos relacionados con este artículo</h1>
+    <div className='option-card'>
+
+
+
+
+    </div>
+    <h1 className='title' >Inspirado por tu historial de búsqueda</h1>
+    <div  className='option-card'>
+    
+
+
+    </div>
+    <h1 className='title'>Opiniones de clientes</h1>
+    <div  className='option-card'>
+
+
+
+    </div>
+    </OptionStyle>
+    <Footer />
 </div>
     )
 }

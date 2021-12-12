@@ -91,7 +91,7 @@ const dispatch = useDispatch()
         <NavDropdown title="Cuenta y Listas"id="navbarScrollingDropdown">
           <NavDropdown.Item href="#action3">Productos</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="#action5">
+          <NavDropdown.Item href="style={{color:'white'}}#action5">
           <Link to='/login' >Iniciar Sesion</Link>
           </NavDropdown.Item>
         </NavDropdown>
@@ -103,7 +103,7 @@ const dispatch = useDispatch()
         </div>
 
         <div className='options'>
-        <Nav.Link as= {Link} className="link-item" to="/carrito"><FontAwesomeIcon icon= {faShoppingCart} size="lg"/></Nav.Link>
+        <Nav.Link as= {Link} className="link-item" to="/carrito"><FontAwesomeIcon  icon= {faShoppingCart} size="lg"/></Nav.Link>
         </div>
 
       </Nav>
@@ -127,7 +127,9 @@ const dispatch = useDispatch()
          <h1 className='title-drawer'> Ayuda Y Configuración</h1>
         <div className='drawer-option'>
         <p className='select-option'>Carrito</p>
+        <Link to='/'>
         <p  className='select-option'>Productos</p>
+        </Link>
             <Link to='/login'><p className='select-option' >Identifícate</p></Link>
         </div>
 
