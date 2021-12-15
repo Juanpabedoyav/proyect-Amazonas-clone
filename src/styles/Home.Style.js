@@ -15,7 +15,7 @@ export const ContainerHome = styled.div`
     /* grid-template-columns: 1fr 1fr 1fr; */
     /* gap: 2px; */
     .container-img{
-        background-image: url("https://d26lpennugtm8s.cloudfront.net/assets/blog_es/pexels-photo-1303098.jpeg");
+        background-image: url("https://m.media-amazon.com/images/I/61uIjme4x8L._SX1250_.jpg");
                 
         /* border: 1px solid green; */
         width:100%;

@@ -20,7 +20,7 @@ const Detalle = () => {
         // e.preventDefault();
         console.log(dispatch(agregarCarrito(data[0])))
         // console.log('producto agregado')
-        // console.log(data[0])
+        // console.log(data[0])git
 
     }
 
@@ -42,9 +42,9 @@ data?.map(el => {
         <>   
                 <div className="alternative-img">
 
-                <img className='list-img' src="https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764208/amazona/goldenState_ym0fps.jpg" alt="" />               
-                <img className='list-img' src="https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764208/amazona/goldenState_ym0fps.jpg" alt="" />               
-                <img className='list-img' src="https://res.cloudinary.com/dflxhnzgs/image/upload/v1638764208/amazona/goldenState_ym0fps.jpg" alt="" />               
+                <img className='list-img' src={el.imagen1} alt="" />               
+                <img className='list-img' src={el.imagen2} alt="" />               
+                <img className='list-img' src={el.imagen3} alt="" />               
 
 
 
@@ -70,7 +70,11 @@ data?.map(el => {
                    {/* <img src={el.imagen} alt="" />                */}
                 </div>
                 <div className="info-img">
-                <h1>{el.nombre}</h1>  
+                <h1 style={{fontWeight:'800', marginBottom:'20px'}}>{el.nombre}</h1> 
+                    <ul>
+                        
+                <li>{el.descripcion}</li>
+                </ul>
                 </div>
                 <div className="compra">
                    <h1>$ {el.precio}</h1> 

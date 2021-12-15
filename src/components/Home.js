@@ -23,7 +23,7 @@ useEffect(() => {
             <>
         <ContainerHome>
                 <div className='container-img'>
-                <h1>Feliz Navidad</h1>
+                {/* <h1>Feliz Navidad</h1> */}
                 </div>
 
                 
