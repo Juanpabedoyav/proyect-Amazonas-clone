@@ -56,8 +56,8 @@ data?.map(el => {
                         smallImage: {
                             alt: 'Wristwatch by Ted Baker London',
                             isFluidWidth: true,
-                            // width: 1200,
-                            // height: 1000, 
+                            width: 1200,
+                            height: 1000, 
                             src: el.imagen,
                         },
                         largeImage: {

@@ -67,7 +67,8 @@ margin-top: 10px;
 
 export const OptionStyle = styled.section`
 padding : 10px;
-border: 1px solid red;
+margin-top: 50px;
+/* border: 1px solid red; */
 .title{
     font-size: 1.2rem;
     font-weight: 800;
