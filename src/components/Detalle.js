@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/button'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { agregarCarrito } from '../redux/actions/carritoAction'
@@ -10,26 +10,20 @@ import ReactImageMagnify from 'react-image-magnify';
 import '../styles/styleDetalle.css'
 
 const Detalle = () => {
-
- const dispatch = useDispatch()
+    
+    const dispatch = useDispatch()
 
     const {data} = useSelector(state => state.data)
     const {id} = useParams()
 
-    const AddCarrito = ()=>{
-        // e.preventDefault();
-        console.log(dispatch(agregarCarrito(data[0])))
-        // console.log('producto agregado')
-        // console.log(data[0])git
+    const [image, setImage] = useState(data?.map(el=>el.imagen))
 
+    const AddCarrito = ()=>{
+        console.log(dispatch(agregarCarrito(data[0])))      
     }
 
    useEffect(() => {
     dispatch(BusquedaProducto(id))
-    // AddCarrito();
-        //    dispatch(getData())
-        //    console.log(info.filter(el=> el === id))
-        // console.log(data?.map(el=>el.imagen))
    }, [dispatch])
 
     return (
@@ -37,14 +31,17 @@ const Detalle = () => {
   
             <StyleDetalle>
 {
+    
 data?.map(el => {
+
     return(     
         <>   
                 <div className="alternative-img">
 
-                <img className='list-img' src={el.imagen1} alt="" />               
-                <img className='list-img' src={el.imagen2} alt="" />               
-                <img className='list-img' src={el.imagen3} alt="" />               
+                <img onMouseOver={()=> setImage(el.imagen)} className='list-img' src={el.imagen} alt="" />               
+                <img onMouseOver={()=> setImage(el.imagen1)} className='list-img' src={el.imagen1} alt="" />               
+                <img onMouseOver={()=> setImage(el.imagen2)} className='list-img' src={el.imagen2} alt="" />               
+                <img onMouseOver={()=> setImage(el.imagen3)} className='list-img' src={el.imagen3} alt="" />               
 
 
 
@@ -58,10 +55,10 @@ data?.map(el => {
                             isFluidWidth: true,
                             width: 1200,
                             height: 1000, 
-                            src: el.imagen,
+                            src: image ,
                         },
                         largeImage: {
-                            src: el.imagen,
+                            src: image ,
                             width: 1200,
                             height: 1000
                             // style:'200px

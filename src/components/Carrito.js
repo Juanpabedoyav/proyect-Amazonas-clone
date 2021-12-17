@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getCarrito } from "../redux/actions/carritoAction"
+import { deleteAsync } from "../redux/actions/deleteAction"
 import { CarritoStyle } from "../styles/Carrito.style"
 
 
@@ -9,6 +10,11 @@ import { CarritoStyle } from "../styles/Carrito.style"
 const Carrito = () => {
 const dispatch = useDispatch()
 const {carrito} = useSelector(state => state.carrito)
+
+const deleteProduct= (nombre)=>{
+    dispatch(deleteAsync(nombre))
+    alert('borraste el producto')
+}
 
 useEffect(() => {
     dispatch(getCarrito())
@@ -34,7 +40,7 @@ useEffect(() => {
                                 <img src={el.imagen} alt="" />
                              </div>
                                 <h1>{el.nombre}</h1>
-                        
+                            <button onClick={()=>deleteProduct(el.nombre)}>Borrar</button>
                             
                                 <hr/>                    
 
