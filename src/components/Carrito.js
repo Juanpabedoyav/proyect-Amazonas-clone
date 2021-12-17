@@ -13,7 +13,6 @@ const {carrito} = useSelector(state => state.carrito)
 
 const deleteProduct= (nombre)=>{
     dispatch(deleteAsync(nombre))
-    alert('borraste el producto')
 }
 
 useEffect(() => {
