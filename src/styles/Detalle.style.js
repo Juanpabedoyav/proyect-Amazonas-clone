@@ -68,14 +68,61 @@ margin-top: 10px;
 export const OptionStyle = styled.section`
 padding : 10px;
 margin-top: 50px;
+/* overflow: hidden; */
 /* border: 1px solid red; */
 .title{
     font-size: 1.2rem;
     font-weight: 800;
 }
 .option-card{
-    display:flex;
-    flex-direction: row;
+    /* border: 1px solid red; */
+margin: 20px 0;
+    /* display: flex; */
+    /* flex-direction: row ; */
+    width: auto;
+    /* height:400px; */
+    padding: 0px;
+    white-space: nowrap;
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+    display: none;
 }
-    
+
+.card{
+        /* border: 1px solid green; */
+        height: 300px;
+        width:280px;
+        margin-left: 10px;
+        background-color: white;
+        padding: 20px ;
+        text-align:left;
+        display:inline-block;
+        overflow:hidden;
+
+  
+    .description{
+        /* border: 1px solid red; */
+        width: 90%;
+        font-size: .8rem; 
+        margin-top: 20px;
+        font-weight:600 ;
+        
+    }
+    .precio{
+        /* border: 1px solid red; */
+        margin:5px;
+        width: 100%;
+        /* text-align:right; */
+    }
+}
+.card-img{
+/* border: 1px solid red; */
+width: 100%;
+height: 180px;
+img{
+    height: 200px;
+    margin: 0 auto;
+}
+  }
+}
 `

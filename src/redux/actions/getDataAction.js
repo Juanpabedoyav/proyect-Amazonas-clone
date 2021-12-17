@@ -11,7 +11,17 @@ export const getInfo =(data)=>{
     }
 
  } 
+ export const getInfoRecomendados =(data)=>{
 
+    return {
+        type:types.recomendados,
+        payload: data
+
+    }
+
+ }
+
+ 
 export const getData = () =>{
     return async(dispatch)=> {
         const docRef = collection( db, "products");
@@ -51,5 +61,23 @@ export const getData = () =>{
           
       }
       
+      export const getDataRecomendados = () =>{
+        return async(dispatch)=> {
+            const docRef = collection( db, "products");
+            const getProducts = await getDocs(docRef)
+            const info =[]
+            getProducts.forEach((docs)=>{
+    
+                info.push(docs.data())
+                // console.log(info)
+            
+    
+            })
+           
+            dispatch(getInfoRecomendados(info));
+        
+            // console.log(getProducts)   
+            }
+        }
 
   

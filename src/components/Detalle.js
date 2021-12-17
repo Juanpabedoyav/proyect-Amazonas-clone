@@ -3,18 +3,22 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { agregarCarrito } from '../redux/actions/carritoAction'
-import { BusquedaProducto, getData, getDataOta } from '../redux/actions/getDataAction'
+import { BusquedaProducto, getData, getDataOta, getDataRecomendados } from '../redux/actions/getDataAction'
 import { StyleDetalle, OptionStyle } from '../styles/Detalle.style'
 import Footer from './Footer'
 import ReactImageMagnify from 'react-image-magnify';
 import '../styles/styleDetalle.css'
+import { Link } from 'react-router-dom';
 
 const Detalle = () => {
     
     const dispatch = useDispatch()
 
     const {data} = useSelector(state => state.data)
-    const {id} = useParams()
+    const {recomendados} = useSelector(state => state.recomendados)
+    // console.log(recomendados[0])
+   
+const {id} = useParams()
 
     const [image, setImage] = useState(data?.map(el=>el.imagen))
 
@@ -23,6 +27,7 @@ const Detalle = () => {
     }
 
    useEffect(() => {
+    dispatch(getDataRecomendados())
     dispatch(BusquedaProducto(id))
    }, [dispatch])
 
@@ -92,22 +97,42 @@ data?.map(el => {
     <h1 className='title'>Productos relacionados con este artículo</h1>
     <div className='option-card'>
 
+    {recomendados?.map(el=>(
 
+       <article className='card'>
+       
+       <div className='card-img'>
+       <img  src={el.imagen} alt="imagenes" />
+       </div>
+       <p className='description'>{el.nombre}</p>
+       <p className=' precio'><sup>US $</sup>{el.precio}</p>
+    </article>
 
+    ))
+    }
+        </div>
 
-    </div>
     <h1 className='title' >Inspirado por tu historial de búsqueda</h1>
-    <div  className='option-card'>
-    
+    <div className='option-card'>
 
+{recomendados?.reverse().map(el=>(
 
+   <article className='card'>
+   
+   <div className='card-img'>
+   <img  src={el.imagen} alt="imagenes" />
+   </div>
+   <p className='description'>{el.nombre}</p>
+   <p className=' precio'><sup>US $</sup>{el.precio}</p>
+</article>
+
+))
+}
     </div>
     <h1 className='title'>Opiniones de clientes</h1>
-    <div  className='option-card'>
+    <div className='option-card'>
 
-
-
-    </div>
+        </div>
     </OptionStyle>
     <Footer />
 </div>

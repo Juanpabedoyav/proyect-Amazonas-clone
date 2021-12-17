@@ -25,9 +25,8 @@ useEffect(() => {
     return (
 
         <CarritoStyle>
-                                                    <div className="car">
-                                <h1>Carrito</h1>
-
+             <div className="car">
+            <h1>Carrito</h1>
 
             {
                 carrito?.map(el=>{
@@ -39,9 +38,9 @@ useEffect(() => {
                                 <img src={el.imagen} alt="" />
                              </div>
                                 <h1>{el.nombre}</h1>
-                            <button onClick={()=>deleteProduct(el.nombre)}>Borrar</button>
                             
                                 <hr/>                    
+                            <button onClick={()=>deleteProduct(el.nombre)}>Borrar</button>
 
                         </div>
                         
@@ -49,7 +48,7 @@ useEffect(() => {
                 })
             }
 
-                                    </div>
+         </div>
 
         </CarritoStyle>
     )

@@ -3,5 +3,6 @@ login:'[Auth] login',
 registro: '[Auth] registro',
 logout: '[Auth] logout',
 getData : '[GetData] getData',
-carrito:'[carrito] carrito'
+recomendados : '[Recomendados] Recomendados',
+carrito:'[carrito] carrito',
  }
