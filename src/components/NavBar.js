@@ -77,7 +77,7 @@ setUbicacion(results[0].formatted_address)
       >
         <div className='options'>
         <span className="link-item" >Hola</span>
-        <Nav.Link as= {Link} className="link-item" to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>{ubicacion}</Nav.Link>
+        <Nav.Link as= {Link} className="link-item" style={{fontSize :'.7rem'}} to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>{ubicacion}</Nav.Link>
         </div>
         <div className='options'>
 

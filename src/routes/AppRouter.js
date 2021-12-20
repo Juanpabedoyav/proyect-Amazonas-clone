@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link, BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from '../components/Login'
 import PrivateRouter from './PrivateRouter'
@@ -8,8 +8,16 @@ import Registro from '../components/Registro'
 import Home from '../components/Home'
 import Detalle from '../components/Detalle'
 import Privacy from '../components/Privacy'
+import {checked} from '../redux/actions/loginAction'
+import { useDispatch } from 'react-redux'
+
+
  const  AppRouter= () => {
-   
+     const dispatch = useDispatch()
+
+
+   useEffect(() => {
+   }, [])
       
     return (
         <BrowserRouter>

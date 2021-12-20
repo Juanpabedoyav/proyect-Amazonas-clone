@@ -1,6 +1,6 @@
 import {types} from '../types/types' 
 
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged} from "firebase/auth"
 import {google, facebook} from '../../firebase/firebase'
 import { useNavigate } from 'react-router-dom'
 
@@ -22,10 +22,17 @@ return {
 export const loginGoogle = () =>{
 return (dispatch)=>{
     const auth = getAuth()
+    onAuthStateChanged(auth, user=>{
+        console.log(user.auth.currentUser)
+        let {currentUser} = user;
+        console.log(currentUser)
+
+    })
     signInWithPopup(auth , google)
     .then(({user})=>{
-        console.log(user)
+        // console.log(user)
 
+      
         dispatch(login(user.displayName, user.email, user.password))
 
     }).catch(e=>{
@@ -40,7 +47,9 @@ export const loginFacebook = () =>{
     signInWithPopup(auth, facebook)
     .then(({user})=>{
         dispatch(login(user.displayName, user.email, user.password));
-
+        onAuthStateChanged(auth, user=>{
+            console.log(user.currentUser)
+        })
     }).catch(e=>{
         alert(e);
     })
@@ -53,13 +62,19 @@ export const loginEmailAndPassword = (email, password) =>{
         const auth = getAuth()
         signInWithEmailAndPassword(auth , email, password)
         .then(({user})=>{
-            console.log(user)
-    
+            // console.log(user)
             dispatch(login(user.email, user.password))
     
         }).catch(e=>{
             console.log(e);
         })
-       
     }
     }
+
+export const checked = ()=>{
+    const auth = getAuth()
+    onAuthStateChanged(auth, user=>{
+        console.log(user)
+    })
+
+}
