@@ -18,12 +18,13 @@ import {
   // DrawerCloseButton,
 } from '@chakra-ui/react'
 import { Formik, Form, Field } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BusquedaProducto } from '../redux/actions/getDataAction';
 
 
 const NavBar = () => {
 
+const {name} = useSelector(state => state.login)
   useEffect(() => {
     getCoordenadas();
 
@@ -114,7 +115,13 @@ setUbicacion(results[0].formatted_address)
       </div>
 
       <div className='options'>
-        <span  className="link-item" >Hola, identificate</span>
+        {
+          name === undefined ?  
+          <span  className="link-item" >Hola, identificate</span>
+          :
+          <span  className="link-item" >Hola, {name}</span>
+        }
+       
         <NavDropdown title="Cuenta y Listas"id="navbarScrollingDropdown">
           <NavDropdown.Item href="#action3">Productos</NavDropdown.Item>
           <NavDropdown.Divider />

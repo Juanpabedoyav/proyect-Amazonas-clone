@@ -8,7 +8,7 @@ import {
   } from "@chakra-ui/react"
   import { Button } from "@chakra-ui/react"
 import { StyleForm } from '../styles/Form.Style';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { loginEmailAndPassword, loginGoogle, loginFacebook} from '../redux/actions/loginAction'
@@ -17,21 +17,17 @@ const Login = () => {
 const dispatch = useDispatch()
 
 
-
   
-// login Events
 
-// const handleSubmit =(e)=>{
-// e.preventDefault()
-// reset()
-// }
 
 const handleGoogle = ()=>{
   dispatch(loginGoogle())
+
 }
 
 const handleFacebook = ()=>{
   dispatch(loginFacebook())
+
 }
 
 

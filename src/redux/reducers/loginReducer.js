@@ -4,7 +4,7 @@ export const loginReducer = (state={}, action)=>{
 switch (action.type) {
     case types.login:
         return{
-            ...state,
+            name:action.payload.name,      
            email:action.payload.email,
            password :action.payload.password
         }

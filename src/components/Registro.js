@@ -59,17 +59,18 @@ const dispatch = useDispatch()
    <Form >
      {/* {console.log(props)}    */}
  
-   <FormControl >
+     <FormControl >
   <FormLabel htmlFor="name" className='label'>Nombre Completo</FormLabel>
   <Field
-  id='name'
   name='name' 
-  type="text"
-  placeholder="Nombre completo"
- />
-
+  placeholder="Nombre Completo"
+   />
    <ErrorMessage name='name' component={()=>(<div className="error" >{errors.name}</div>)} />
+
+   {/* {touched.email && errors.email && <div className="error" >{errors.email}</div>} */}
 </FormControl>
+
+
   <FormControl >
   <FormLabel htmlFor="email" className='label'>Correo Electronico</FormLabel>
   <Field
