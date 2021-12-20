@@ -6,7 +6,8 @@ import {
     FormErrorMessage,
   } from "@chakra-ui/react"
   import { Alert, AlertIcon } from "@chakra-ui/alert"
-
+import { useDispatch } from 'react-redux';
+import {registroFirebase} from '../redux/actions/registroAction'
   import { Button } from "@chakra-ui/react"
 import { StyleForm } from '../styles/Form.Style';
 import { Link } from 'react-router-dom';
@@ -14,10 +15,10 @@ import {Form, Formik, Field, ErrorMessage,} from 'formik'
 import {useNavigate} from 'react-router-dom'
 const Registro = () => {
 
-  const [submit, setSubmit] = useState(false)
+const [submit, setSubmit] = useState(false)
 
 const navigate = useNavigate()
-
+const dispatch = useDispatch()
     return (
         <StyleForm>
    <Formik
@@ -46,8 +47,9 @@ const navigate = useNavigate()
       onSubmit={(data, {resetForm})=>{
         resetForm();
        setSubmit(true);
+       dispatch(registroFirebase(data.email, data.password));
       setTimeout(()=> navigate('/login'), 2000 );      
-      
+      console.log(data)
       }}
 
 >

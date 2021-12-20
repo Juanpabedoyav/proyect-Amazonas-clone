@@ -52,7 +52,7 @@ export const loginEmailAndPassword = (email, password) =>{
         .then(({user})=>{
             console.log(user)
     
-            dispatch(login(user.email, user.displayName))
+            // dispatch(login(user.email, user.displayName))
     
         }).catch(e=>{
             console.log(e);

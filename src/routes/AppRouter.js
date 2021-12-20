@@ -7,6 +7,7 @@ import RoutesApp from './RoutesApp'
 import Registro from '../components/Registro'
 import Home from '../components/Home'
 import Detalle from '../components/Detalle'
+import Privacy from '../components/Privacy'
  const  AppRouter= () => {
    
       
@@ -28,6 +29,10 @@ import Detalle from '../components/Detalle'
        
         <Route path='/detalle/:id' element={<PublicRouter>
                                         <Detalle/>
+                                    </PublicRouter>}/>
+
+        <Route path='/privacidad/' element={<PublicRouter>
+                                        <Privacy/>
                                     </PublicRouter>}/>
         </Routes>
     </BrowserRouter>

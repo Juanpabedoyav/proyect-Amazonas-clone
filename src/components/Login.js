@@ -12,24 +12,19 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { loginEmailAndPassword, loginGoogle, loginFacebook} from '../redux/actions/loginAction'
+import { Form, Formik } from 'formik';
 const Login = () => {
 const dispatch = useDispatch()
 
 
 
-   const[form, handleInput, reset]= useForm({
-    email:'',
-    password:''
-
-   }) 
-const { email, password} = form
+  
 // login Events
 
-const handleSubmit =(e)=>{
-e.preventDefault()
-dispatch(loginEmailAndPassword(email, password))
-reset()
-}
+// const handleSubmit =(e)=>{
+// e.preventDefault()
+// reset()
+// }
 
 const handleGoogle = ()=>{
   dispatch(loginGoogle())
@@ -42,14 +37,28 @@ const handleFacebook = ()=>{
 
     return (
         <StyleForm>
-<form onSubmit={handleSubmit}>
+ <Formik
+ initialValues={{
+  email:'',
+  password:'',
+ }}
+onSubmit={(valores)=>{
+  console.log(valores)
+  dispatch(loginEmailAndPassword(valores.email, valores.password))
+
+}}
+ >
+ {({values, errors, handleSubmit, handleChange })=>(
+
+
+<Form >
 <FormControl id="email">
   <FormLabel className='label' >Correo Electronico</FormLabel>
   <Input type="email" 
     placeholder="Correo electronico"
     name="email"
-    value={email}
-    onChange={handleInput}
+    value={values.email}
+    onChange={handleChange}
 
     />
 </FormControl>
@@ -59,8 +68,8 @@ const handleFacebook = ()=>{
   type="password" 
   placeholder="Contraseña"
   name="password"
-  value={password}
-  onChange={handleInput}
+  value={values.password}
+  onChange={handleChange}
 
 
 
@@ -68,7 +77,10 @@ const handleFacebook = ()=>{
 </FormControl>
 
     <Button type='submit'className="create-button" colorScheme="blue">Iniciar Sesión</Button>
-    </form>
+  </Form>
+   )}  
+  </Formik>         
+
     <Button onClick={handleGoogle} type='button'className="create-button" colorScheme="blue">Google</Button>
     <Button onClick={handleFacebook} type='button'className="create-button" colorScheme="blue">Facebook</Button>
 
