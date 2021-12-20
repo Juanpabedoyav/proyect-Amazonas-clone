@@ -1,6 +1,6 @@
 import { faShoppingCart, faSearch, faMapMarkerAlt, faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Navbar, Container, Nav , NavDropdown , Button,FormControl} from 'react-bootstrap';
 import { useDisclosure } from '@chakra-ui/react'
 
@@ -23,11 +23,38 @@ import { BusquedaProducto } from '../redux/actions/getDataAction';
 
 
 const NavBar = () => {
+
+  useEffect(() => {
+    getCoordenadas();
+
+  }, [])
+
+  const dispatch = useDispatch()
+
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = useState('left')
 
-const dispatch = useDispatch()
+  let url = '';
+  // const [pais, setPais] = useState('')
 
+  const [ubicacion, setUbicacion] = useState('')
+  const getCoordenadas = () => {
+    //watchPosition
+    navigator.geolocation.getCurrentPosition(position => {
+     const { latitude, longitude } = position.coords;
+     url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyDvS3_rBwM7RJYjDOnPzquTpJVlskDs7nI';
+     console.log(latitude,longitude)
+     getUbicacion(url);
+   }); 
+ }
+const getUbicacion = async (urlApi) =>{
+const res = await fetch(urlApi);
+const {results} = await res.json();
+// const country = results[0].address_components[6].long_name;
+console.log(results[0].address_components[6].long_name);
+
+setUbicacion(results[0].formatted_address)
+}
 
 
 
@@ -49,7 +76,7 @@ const dispatch = useDispatch()
       >
         <div className='options'>
         <span className="link-item" >Hola</span>
-        <Nav.Link as= {Link} className="link-item" to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>Elige Tu dirección</Nav.Link>
+        <Nav.Link as= {Link} className="link-item" to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>{ubicacion}</Nav.Link>
         </div>
         <div className='options'>
 

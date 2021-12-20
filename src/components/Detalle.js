@@ -13,25 +13,42 @@ import { Link } from 'react-router-dom';
 const Detalle = () => {
     
     const dispatch = useDispatch()
-
     const {data} = useSelector(state => state.data)
     const {recomendados} = useSelector(state => state.recomendados)
     // console.log(recomendados[0])
-   
-const {id} = useParams()
-
+    const {id} = useParams()
     const [image, setImage] = useState(data?.map(el=>el.imagen))
+    const [ubicacion, setUbicacion] = useState('')
 
-    const AddCarrito = ()=>{
-        console.log(dispatch(agregarCarrito(data[0])))      
-    }
+const AddCarrito = ()=>{
+    dispatch(agregarCarrito(data[0]))
+}
+let url = '';
+// const [pais, setPais] = useState('')
 
+const getCoordenadas = () => {
+  //watchPosition
+  navigator.geolocation.getCurrentPosition(position => {
+   const { latitude, longitude } = position.coords;
+   url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyDvS3_rBwM7RJYjDOnPzquTpJVlskDs7nI';
+   console.log(latitude,longitude)
+   getUbicacion(url);
+ }); 
+}
+const getUbicacion = async (urlApi) =>{
+const res = await fetch(urlApi);
+const {results} = await res.json();
+const country = results[0].address_components[6].long_name;
+// console.log(results[0].address_components[6].long_name);
+setUbicacion(country);
+}
    useEffect(() => {
     dispatch(getDataRecomendados())
-    dispatch(BusquedaProducto(id))
+    dispatch(BusquedaProducto(id));
+    getCoordenadas();
    }, [dispatch])
 
-    return (
+return (
         <div>
   
             <StyleDetalle>
@@ -79,7 +96,8 @@ data?.map(el => {
                 </ul>
                 </div>
                 <div className="compra">
-                   <h1>$ {el.precio}</h1> 
+                    <h1 className='ubicacion-compra'>Envio gratis a {ubicacion}</h1>
+                   <h1 className='precio-compra'>$ {el.precio}</h1> 
 
 
                    <button onClick={() => AddCarrito()} type='button'className="agregar-button" >Agregar al Carrito</button>
