@@ -22,12 +22,7 @@ return {
 export const loginGoogle = () =>{
 return (dispatch)=>{
     const auth = getAuth()
-    onAuthStateChanged(auth, user=>{
-        console.log(user.auth.currentUser)
-        let {currentUser} = user;
-        console.log(currentUser)
 
-    })
     signInWithPopup(auth , google)
     .then(({user})=>{
         // console.log(user)
@@ -47,9 +42,6 @@ export const loginFacebook = () =>{
     signInWithPopup(auth, facebook)
     .then(({user})=>{
         dispatch(login(user.displayName, user.email, user.password));
-        onAuthStateChanged(auth, user=>{
-            console.log(user.currentUser)
-        })
     }).catch(e=>{
         alert(e);
     })

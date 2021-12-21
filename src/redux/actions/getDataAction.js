@@ -50,7 +50,6 @@ export const getData = () =>{
           getData.forEach((doc)=>{
       if(doc.data().nombre === nombre){
         busqueda.push(doc.data());
-            // console.log
             dispatch(getInfo(busqueda))
             
         }     
