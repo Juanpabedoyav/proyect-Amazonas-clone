@@ -3,21 +3,29 @@ import { useDispatch, useSelector } from "react-redux"
 import { getCarrito } from "../redux/actions/carritoAction"
 import { deleteAsync } from "../redux/actions/deleteAction"
 import { CarritoStyle } from "../styles/Carrito.style"
-
+import {
+    Alert,
+    AlertIcon,
+    // AlertTitle,
+    // AlertDescription,
+  } from '@chakra-ui/react'
 
 
 
 const Carrito = () => {
 const dispatch = useDispatch()
 const {carrito} = useSelector(state => state.carrito)
+const {logged} = useSelector(state => state.login)
 
 const deleteProduct= (nombre)=>{
     dispatch(deleteAsync(nombre))
 }
 
+
 useEffect(() => {
     dispatch(getCarrito())
     // console.log(state)
+
 }, [dispatch])
 
 

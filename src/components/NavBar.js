@@ -20,24 +20,22 @@ import {
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { BusquedaProducto } from '../redux/actions/getDataAction';
+import { logoutAsync } from '../redux/actions/loginAction';
 
 
 const NavBar = () => {
-
-const {name} = useSelector(state => state.login)
+const dispatch = useDispatch()
+const {email, logged} = useSelector(state => state.login)
   useEffect(() => {
     getCoordenadas();
 
   }, [])
 
-  const dispatch = useDispatch()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = useState('left')
 
   let url = '';
-  // const [pais, setPais] = useState('')
-
   const [ubicacion, setUbicacion] = useState('')
   const getCoordenadas = () => {
     //watchPosition
@@ -64,7 +62,7 @@ setUbicacion(results[0].formatted_address)
 <div>
   <Navbar className="background-nav" expand="lg">
   <Container fluid>
-    <Navbar.Brand as= {Link} to="/">
+    <Navbar.Brand as= {Link} to="/home">
       <img src={logoAmazon} alt='logo'/>
 
       </Navbar.Brand>
@@ -77,7 +75,7 @@ setUbicacion(results[0].formatted_address)
       >
         <div className='options'>
         <span className="link-item" >Hola</span>
-        <Nav.Link as= {Link} className="link-item" style={{fontSize :'.7rem'}} to="/home"><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>{ubicacion}</Nav.Link>
+        <Nav.Link as= {Link} className="link-item" style={{fontSize :'.7rem'}} to=""><FontAwesomeIcon className="location"icon= {faMapMarkerAlt}/>{ubicacion}</Nav.Link>
         </div>
         <div className='options'>
 
@@ -116,17 +114,20 @@ setUbicacion(results[0].formatted_address)
 
       <div className='options'>
         {
-          name === undefined ?  
+          email === undefined ?  
           <span  className="link-item" >Hola, identificate</span>
           :
-          <span  className="link-item" >Hola, {name}</span>
+          <span  className="link-item" >Hola, {email}</span>
         }
        
         <NavDropdown title="Cuenta y Listas"id="navbarScrollingDropdown">
-          <NavDropdown.Item href="#action3">Productos</NavDropdown.Item>
+          <NavDropdown.Item href="/home">Productos</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="style={{color:'white'}}#action5">
-          <Link to='/login' >Iniciar Sesion</Link>
+          <NavDropdown.Item >
+          {/* {
+            logged ===false?<Link to='/login' >Iniciar Sesion</Link>
+            :<Link to='/home' onClick={dispatch(logoutAsync())} >Cerrar Sesion</Link>
+          } */}
           </NavDropdown.Item>
         </NavDropdown>
         </div>

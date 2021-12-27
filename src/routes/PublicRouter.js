@@ -1,11 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
 const PublicRouter = ({children}) => {
-    return (
-        <div>
-          {children}  
-        </div>
-    )
+  const {logged} = useSelector(state => state.login)  
+ 
+  return logged ? <Navigate to= '/home'/>  : children
 }
 
 export default PublicRouter

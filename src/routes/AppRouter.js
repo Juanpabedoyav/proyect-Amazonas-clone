@@ -3,45 +3,64 @@ import {Link, BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from '../components/Login'
 import PrivateRouter from './PrivateRouter'
 import PublicRouter from './PublicRouter'
-import RoutesApp from './RoutesApp'
 import Registro from '../components/Registro'
 import Home from '../components/Home'
 import Detalle from '../components/Detalle'
-import Privacy from '../components/Privacy'
-import {checked} from '../redux/actions/loginAction'
-import { useDispatch } from 'react-redux'
+import NavBar from '../components/NavBar'
 
+// import Privacy from '../components/Privacy'
+import { useDispatch } from 'react-redux'
+import {getAuth, onAuthStateChanged} from 'firebase/auth'
+import { login, logout} from '../redux/actions/loginAction'
+import Carrito from '../components/Carrito'
 
  const  AppRouter= () => {
      const dispatch = useDispatch()
 
 
-//    useEffect(() => {
-//    }, [])
+   useEffect(() => {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user)=>{
+        if(user?.uid){
+            console.log(user.uid)
+
+            dispatch(login(user.uid, user.email))
+        }else{
+            dispatch(logout())
+        }
+
+    })
+}, [])
       
     return (
+        
         <BrowserRouter>
+            <NavBar />
 
         <Routes>
 
-        <Route path='*' element={
+        <Route path='/carrito' element={
                                     <PrivateRouter>
-                                        <RoutesApp/>
+                                        <Carrito/>
                                     </PrivateRouter>}/>
-        </Routes>
-
-        <Routes>
-        <Route path='/' element={<PublicRouter>
-                                        <Home/>
+     
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/' element={<Home/>}/>
+                      
+         <Route path='/registro' element={<PublicRouter>
+                                        <Registro/>
                                     </PublicRouter>}/>
-       
         <Route path='/detalle/:id' element={<PublicRouter>
                                         <Detalle/>
                                     </PublicRouter>}/>
-
-        <Route path='/privacidad/' element={<PublicRouter>
-                                        <Privacy/>
+        <Route path='/login' element={<PublicRouter>
+                                        <Login/>
                                     </PublicRouter>}/>
+ 
+
+        {/* <Route path='/privacidad/' element={<PublicRouter> */}
+                                        {/* <Privacy/> */}
+                                    {/* </PublicRouter>}/> */}
         </Routes>
     </BrowserRouter>
     )
