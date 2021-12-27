@@ -27,7 +27,7 @@ useEffect(() => {
                 {/* <h1>Feliz Navidad</h1> */}
                 </div>
               
-              {logged? <h1>Bienvenido</h1>:<article className='card'>
+              {logged? <h1></h1>:<article className='card'>
 
                         <p className='text-secure-login'>Inicia sesión para vivir tu mejor experiencia</p>
 
