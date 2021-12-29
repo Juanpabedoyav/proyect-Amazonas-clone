@@ -125,8 +125,8 @@ setUbicacion(results[0].formatted_address)
           <NavDropdown.Divider />
           <NavDropdown.Item >
           {
-            logged ===false?<Link to='/login' >Iniciar Sesion</Link>
-            :<Link  onClick={dispatch(logoutAsync())} >Cerrar Sesion</Link>
+            logged?<Link to='/login' >Iniciar Sesion</Link>
+            :<button  onClick={dispatch(logoutAsync())} >Cerrar Sesion</button>
           } 
           </NavDropdown.Item>
         </NavDropdown>

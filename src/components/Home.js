@@ -18,7 +18,8 @@ const Home = () => {
  const {logged} = useSelector(state => state.login)
 
 useEffect(() => {
-        dispatch(getData())
+        // dispatch(getData())
+        // console.log(data)
 }, [dispatch])
     return (
             <>
@@ -27,7 +28,7 @@ useEffect(() => {
                 {/* <h1>Feliz Navidad</h1> */}
                 </div>
               
-              {logged? <h1></h1>:<article className='card'>
+              {/* {logged? <h1></h1>:<article className='card'>
 
                         <p className='text-secure-login'>Inicia sesión para vivir tu mejor experiencia</p>
 
@@ -35,7 +36,7 @@ useEffect(() => {
                        <Button className="secure-login" ><span>Iniciar Sesión de forma segura</span></Button>
                  </Link>  
                 </article>
-                } 
+                }  */}
             
             {
                 data?.map(element => {

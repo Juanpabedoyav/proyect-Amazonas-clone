@@ -11,7 +11,7 @@ import NavBar from '../components/NavBar'
 // import Privacy from '../components/Privacy'
 import { useDispatch } from 'react-redux'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { login, logout} from '../redux/actions/loginAction'
+import { login, logout, logoutAsync} from '../redux/actions/loginAction'
 import Carrito from '../components/Carrito'
 
  const  AppRouter= () => {
@@ -22,15 +22,15 @@ import Carrito from '../components/Carrito'
     const auth = getAuth()
     onAuthStateChanged(auth, (user)=>{
         if(user?.uid){
-            console.log(user.uid)
+            console.log(user?.uid)
 
             dispatch(login(user.uid, user.email))
         }else{
-            dispatch(logout())
+            // dispatch(logoutAsync())
         }
 
     })
-}, [])
+}, [dispatch])
       
     return (
         
@@ -58,9 +58,9 @@ import Carrito from '../components/Carrito'
                                     </PublicRouter>}/>
  
 
-        {/* <Route path='/privacidad/' element={<PublicRouter> */}
-                                        {/* <Privacy/> */}
-                                    {/* </PublicRouter>}/> */}
+        {/* <Route path='/privacidad/' element={<PublicRouter> 
+                                         <Privacy/> 
+                                        </PublicRouter>}/> */}
         </Routes>
     </BrowserRouter>
     )

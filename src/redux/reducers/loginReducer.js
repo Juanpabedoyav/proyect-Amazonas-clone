@@ -8,13 +8,15 @@ switch (action.type) {
            email :action.payload.email,
            logged:true
         }
-    // case types.registro:
-    //     return{
-    //         ...state,
-    //         name: action.payload.name,
-    //        email:action.payload.email,
-    //        password :action.payload.password
-    //     }
+    case types.logout:
+        return{
+            logged:true
+  
+            //   ...state,
+            //         name: action.payload.name,
+            //        email:action.payload.email,
+            //        password :action.payload.password
+        }
     default:
         return {
             state

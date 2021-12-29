@@ -30,7 +30,7 @@ export const getData = () =>{
         getProducts.forEach((docs)=>{
 
             info.push(docs.data())
-            // console.log(info)
+            console.log(info)
         
 
         })
