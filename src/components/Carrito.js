@@ -3,12 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { getCarrito } from "../redux/actions/carritoAction"
 import { deleteAsync } from "../redux/actions/deleteAction"
 import { CarritoStyle } from "../styles/Carrito.style"
-import {
-    Alert,
-    AlertIcon,
-    // AlertTitle,
-    // AlertDescription,
-  } from '@chakra-ui/react'
 
 
 
@@ -23,8 +17,8 @@ const deleteProduct= (nombre)=>{
 
 
 useEffect(() => {
+
     dispatch(getCarrito())
-    // console.log(state)
 
 }, [dispatch])
 
@@ -33,11 +27,15 @@ useEffect(() => {
     return (
 
         <CarritoStyle>
-             <div className="car">
-            <h1>Carrito</h1>
+                        <h1>Carrito</h1>
 
+             <div className="car">
+        
+        
             {
-                carrito?.map(el=>{
+                carrito=== undefined?
+                <h1>Tu carrito es ta vacio </h1>
+             :carrito?.map(el=>{
                     return(
                         <div>
 
@@ -55,7 +53,7 @@ useEffect(() => {
                     )
                 })
             }
-
+        
          </div>
 
         </CarritoStyle>

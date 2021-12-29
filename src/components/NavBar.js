@@ -53,6 +53,9 @@ const {results} = await res.json();
 setUbicacion(results[0].formatted_address)
 }
 
+const handleLogout=()=>{
+  dispatch(logoutAsync());
+}
 
 
     return (
@@ -112,7 +115,7 @@ setUbicacion(results[0].formatted_address)
 
       <div className='options'>
         {
-          email?<span  className="link-item" >Hola, identificate</span>
+          email=== undefined?<span  className="link-item" >Hola, identificate</span>
           :<span  className="link-item" >Hola, {email}</span>
         }
        
@@ -121,8 +124,8 @@ setUbicacion(results[0].formatted_address)
           <NavDropdown.Divider />
           <NavDropdown.Item >
           {
-            logged?<Link to='/login' >Iniciar Sesion</Link>
-            :<button  onClick={dispatch(logoutAsync())} >Cerrar Sesion</button>
+            logged===false?<Link to='/login' >Iniciar Sesion</Link>
+            :<button onClick={handleLogout}>Cerrar Sesion</button>
           } 
           </NavDropdown.Item>
         </NavDropdown>
@@ -152,7 +155,24 @@ setUbicacion(results[0].formatted_address)
         <DrawerOverlay />
         <DrawerContent>
           <Link to='/login'>
-          <DrawerHeader className='drawer-header' borderBottomWidth='1px'  ><FontAwesomeIcon className='user-avatar' icon= {faUserCircle} size='lg' />Hola, Identificate</DrawerHeader>
+          {email?
+            <DrawerHeader className='drawer-header' borderBottomWidth='1px'  >
+             
+              <FontAwesomeIcon 
+              className='user-avatar' 
+              icon= {faUserCircle} 
+              size='lg' />
+              Hola, {email}
+            </DrawerHeader>
+          : <DrawerHeader className='drawer-header' borderBottomWidth='1px'  >
+             
+            <FontAwesomeIcon 
+              className='user-avatar' 
+           icon= {faUserCircle} 
+           size='lg' />
+            Hola, Identificate
+           </DrawerHeader>
+        }
           </Link>
           <DrawerBody>
          <h1 className='title-drawer'> Ayuda Y Configuración</h1>

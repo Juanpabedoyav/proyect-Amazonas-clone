@@ -2,7 +2,6 @@ import {types} from '../types/types'
 
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth"
 import {google, facebook} from '../../firebase/firebase'
-import { useNavigate } from 'react-router-dom'
 
 export const logout =()=>{
   return {
@@ -16,7 +15,7 @@ export const logoutAsync =()=>{
 return (dispatch) =>{
     const auth = getAuth()
    signOut(auth)
-    .then((user)=>{
+    .then(()=>{
         // console.log(user)
         dispatch(logout());
         

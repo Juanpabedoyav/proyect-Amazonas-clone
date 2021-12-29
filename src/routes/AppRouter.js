@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Link, BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from '../components/Login'
 import PrivateRouter from './PrivateRouter'
 import PublicRouter from './PublicRouter'
@@ -11,7 +11,7 @@ import NavBar from '../components/NavBar'
 // import Privacy from '../components/Privacy'
 import { useDispatch } from 'react-redux'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import { login, logout, logoutAsync} from '../redux/actions/loginAction'
+import { login, logout} from '../redux/actions/loginAction'
 import Carrito from '../components/Carrito'
 
  const  AppRouter= () => {
@@ -25,9 +25,11 @@ import Carrito from '../components/Carrito'
             console.log(user?.uid)
 
             dispatch(login(user.uid, user.email))
+        }else{
+            dispatch(logout());
         }
     })
-    }, [])
+    }, [dispatch])
       
     return (
         
