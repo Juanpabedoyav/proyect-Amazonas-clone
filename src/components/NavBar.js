@@ -181,7 +181,10 @@ const handleLogout=()=>{
         <Link to='/'>
         <p  className='select-option'>Productos</p>
         </Link>
-            <Link to='/login'><p className='select-option' >Identifícate</p></Link>
+        {
+            logged===false?<Link to='/login'><p className='select-option' >Identifícate</p></Link>
+            :<button onClick={handleLogout}>Cerrar Sesion</button>
+        }
         </div>
 
           </DrawerBody>
