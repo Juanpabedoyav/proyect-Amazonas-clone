@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { login, logout} from '../redux/actions/loginAction'
 import Carrito from '../components/Carrito'
+import Privacy from '../components/Privacy'
 
  const  AppRouter= () => {
      const dispatch = useDispatch()
@@ -57,9 +58,9 @@ import Carrito from '../components/Carrito'
                                     </PublicRouter>}/>
  
 
-        {/* <Route path='/privacidad/' element={<PublicRouter> 
+        <Route path='/privacidad' element={<PublicRouter> 
                                          <Privacy/> 
-                                        </PublicRouter>}/> */}
+                                        </PublicRouter>}/>
         </Routes>
     </BrowserRouter>
     )
