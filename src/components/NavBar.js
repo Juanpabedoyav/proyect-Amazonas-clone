@@ -1,7 +1,7 @@
 import { faShoppingCart, faSearch, faMapMarkerAlt, faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState, useEffect} from 'react'
-import { Navbar, Container, Nav , NavDropdown , Button,FormControl} from 'react-bootstrap';
+import { Navbar, Container, Nav , NavDropdown , Button} from 'react-bootstrap';
 import { useDisclosure } from '@chakra-ui/react'
 
 import {Link} from 'react-router-dom'
@@ -11,13 +11,11 @@ import '../styles/styleNav.css'
 import {
   Drawer,
   DrawerBody,
-  // DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  // DrawerCloseButton,
 } from '@chakra-ui/react'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { BusquedaProducto } from '../redux/actions/getDataAction';
 import { logoutAsync } from '../redux/actions/loginAction';
@@ -26,9 +24,9 @@ import { logoutAsync } from '../redux/actions/loginAction';
 const NavBar = () => {
 const dispatch = useDispatch()
 const {email, logged} = useSelector(state => state.login)
-  useEffect(() => {
+  
+useEffect(() => {
     getCoordenadas();
-
   }, [])
 
 
@@ -50,7 +48,7 @@ const getUbicacion = async (urlApi) =>{
 const res = await fetch(urlApi);
 const {results} = await res.json();
 // const country = results[0].address_components[6].long_name;
-console.log(results[0].address_components[6].long_name);
+// console.log(results[0].address_components[6].long_name);
 
 setUbicacion(results[0].formatted_address)
 }
@@ -84,7 +82,7 @@ setUbicacion(results[0].formatted_address)
     nombre: '',
   }}
   onSubmit={(valores)=>{
-    console.log(valores);
+    // console.log(valores);
     dispatch(BusquedaProducto(valores.nombre));
   }}
 
@@ -114,10 +112,8 @@ setUbicacion(results[0].formatted_address)
 
       <div className='options'>
         {
-          email === undefined ?  
-          <span  className="link-item" >Hola, identificate</span>
-          :
-          <span  className="link-item" >Hola, {email}</span>
+          email?<span  className="link-item" >Hola, identificate</span>
+          :<span  className="link-item" >Hola, {email}</span>
         }
        
         <NavDropdown title="Cuenta y Listas"id="navbarScrollingDropdown">

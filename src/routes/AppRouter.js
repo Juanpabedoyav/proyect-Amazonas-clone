@@ -25,12 +25,9 @@ import Carrito from '../components/Carrito'
             console.log(user?.uid)
 
             dispatch(login(user.uid, user.email))
-        }else{
-            // dispatch(logoutAsync())
         }
-
     })
-}, [dispatch])
+}, [])
       
     return (
         
