@@ -177,7 +177,9 @@ const handleLogout=()=>{
           <DrawerBody>
          <h1 className='title-drawer'> Ayuda Y Configuración</h1>
         <div className='drawer-option'>
+        <Link to ='/carrito'>
         <p className='select-option'>Carrito</p>
+        </Link>
         <Link to='/'>
         <p  className='select-option'>Productos</p>
         </Link>
