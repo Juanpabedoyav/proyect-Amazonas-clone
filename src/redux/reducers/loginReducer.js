@@ -10,12 +10,7 @@ switch (action.type) {
         }
     case types.logout:
         return{
-            logged:true
-  
-            //   ...state,
-            //         name: action.payload.name,
-            //        email:action.payload.email,
-            //        password :action.payload.password
+            logged:false,  
         }
     default:
         return {

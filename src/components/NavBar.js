@@ -40,7 +40,7 @@ useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
      const { latitude, longitude } = position.coords;
      url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyDvS3_rBwM7RJYjDOnPzquTpJVlskDs7nI';
-     console.log(latitude,longitude)
+    //  console.log(latitude,longitude)
      getUbicacion(url);
    }); 
  }

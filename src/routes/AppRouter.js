@@ -27,7 +27,7 @@ import Carrito from '../components/Carrito'
             dispatch(login(user.uid, user.email))
         }
     })
-}, [])
+    }, [])
       
     return (
         
