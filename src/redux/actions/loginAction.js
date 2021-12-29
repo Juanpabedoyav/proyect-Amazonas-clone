@@ -60,7 +60,8 @@ export const loginFacebook = () =>{
     const auth = getAuth()
     signInWithPopup(auth, facebook)
     .then(({user})=>{
-        dispatch(login(user.displayName, user.email));
+        console.log(user)
+        dispatch(login(user.uid, user.email));
     }).catch(e=>{
         alert(e);
     })
