@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { ContainerHome } from '../styles/Home.Style'
 import { useEffect } from 'react';
 import { getData } from '../redux/actions/getDataAction';
@@ -18,8 +18,8 @@ const Home = () => {
  const {logged} = useSelector(state => state.login)
 
 useEffect(() => {
-        // dispatch(getData())
-        // console.log(data)
+        dispatch(getData())
+        console.log(data)
 }, [dispatch])
     return (
             <>
@@ -28,19 +28,21 @@ useEffect(() => {
                 {/* <h1>Feliz Navidad</h1> */}
                 </div>
               
-              {/* {logged? <h1></h1>:<article className='card'>
-
-                        <p className='text-secure-login'>Inicia sesión para vivir tu mejor experiencia</p>
-
-                  <Link to='/login'>
-                       <Button className="secure-login" ><span>Iniciar Sesión de forma segura</span></Button>
-                 </Link>  
-                </article>
-                }  */}
             
-            {
+            
+                        {
+                            logged?<h1></h1>
+                            :<article className='card'>
+                             <p className='text-secure-login'>Inicia sesión para vivir tu mejor experiencia</p>
+
+                            <Link to='/login'>
+                            <Button className="secure-login" ><span>Iniciar Sesión de forma segura</span></Button>
+                            </Link>  
+                             </article>
+                        }
+                {
                 data?.map(element => {
-              return(
+                return(
                  <Link style={{color:'black'}}to={`/detalle/${element.nombre}`} >
                  
                   <article className='card'>

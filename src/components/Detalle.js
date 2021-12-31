@@ -43,8 +43,8 @@ const country = results[0].address_components[6].long_name;
 setUbicacion(country);
 }
    useEffect(() => {
-    // dispatch(getDataRecomendados())
-    // dispatch(BusquedaProducto(id));
+    dispatch(getDataRecomendados())
+    dispatch(BusquedaProducto(id));
     getCoordenadas();
    }, [dispatch])
 
