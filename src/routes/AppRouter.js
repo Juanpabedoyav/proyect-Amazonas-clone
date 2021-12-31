@@ -9,7 +9,7 @@ import Detalle from '../components/Detalle'
 import NavBar from '../components/NavBar'
 
 // import Privacy from '../components/Privacy'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import { login, logout} from '../redux/actions/loginAction'
 import Carrito from '../components/Carrito'
@@ -18,7 +18,7 @@ import Privacy from '../components/Privacy'
  const  AppRouter= () => {
      const dispatch = useDispatch()
 
-
+const {logged} = useSelector(state => state.login)
    useEffect(() => {
     const auth = getAuth()
     onAuthStateChanged(auth, (user)=>{
@@ -30,7 +30,7 @@ import Privacy from '../components/Privacy'
             dispatch(logout());
         }
     })
-    }, [dispatch])
+    }, [logged])
       
     return (
         
